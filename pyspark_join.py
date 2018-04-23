@@ -57,11 +57,17 @@ class Join:
             map(lambda ((key, _), (val1, val2)): (key, (val1, val2)))
         return results
 
+
+conf = SparkConf().setAppName("dkuzin").setMaster("yarn")
+conf.set('spark.scheduler.listenerbus.eventqueue.size', 1000000)
+conf.set('yarn.nodemanager.vmem.check.enabled', False)
+conf.set('spark.yarn.executor.memoryOverhead', '20000m')
+sc = SparkContext(conf=conf)
+
 path1 = "gs://dkuzin/experiments/ips"
 path2 = "gs://dkuzin/experiments/sites"
 
 rdd1 = sc.textFile(path1, minPartitions=None).coalesce(N_PARTITIONS, shuffle=False)
 rdd2 = sc.textFile(path2, minPartitions=None).coalesce(N_PARTITIONS, shuffle=False)
 
-marked_logs = Join().innerJoin(rdd1, rdd2, max_num=1000, freq_threshold=100000)
-
+results = Join().innerJoin(rdd1, rdd2, max_num=1000, freq_threshold=100000).collect()
