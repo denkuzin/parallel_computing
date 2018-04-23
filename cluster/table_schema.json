@@ -1,0 +1,5 @@
+[ {"name": "ip", "type": "string"},
+  {"name": "site", "type": "string"},
+  {"name": "num", "type": "integer"},
+  {"name": "dot", "type": "float"}
+]
