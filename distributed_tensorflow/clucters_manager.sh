@@ -32,7 +32,7 @@ if [ "$1" == "deploy" -o  "$1" == "delete" ]; then
    ./bdutil -f -n $num_inst -z ${zone} -P ${prefix} \
            -b "dkuzin_clust_${zone}" -u custom/.vimrc \
            -u ../run.sh -u ../trainer.py -u ../reader.py \
-           -u ../item2vec_distributed.py \
+           -u ../word2vec_distributed.py \
            -u ../install.sh \
            $1 &
   done

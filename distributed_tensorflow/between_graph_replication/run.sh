@@ -17,7 +17,7 @@ task_index=0
 job_name="ps"
 fi
 
-python item2vec_distributed.py \
+python word2vec_distributed.py \
      --ps_hosts=tf-m:2222 \
      --worker_hosts=$list_workers \
      --job_name=$job_name \
