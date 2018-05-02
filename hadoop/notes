@@ -1,0 +1,145 @@
+links from dshulga:
+
+http://www.idryman.org/blog/2014/03/05/hadoop-performance-tuning-best-practices/
+
+http://www.slideshare.net/Hadoop_Summit/optimizing-mapreduce-job-performance
+
+https://books.google.ru/books?id=Wu_xeGdU4G8C&pg=PA220&lpg=PA220&dq=mapred.job.reuse.jvm.num.tasks&source=bl&ots=i8AVQzW8Wq&sig=PZjmUziJfVb6hBZxEHEbx0Ehh7I&hl=en&sa=X&ved=0ahUKEwiv06r8yqjQAhWC3CwKHYSCCl8Q6AEISzAH#v=onepage&q&f=false
+
+look at this course:
+https://www.linkedin.com/learning/hadoop-fundamentals/welcome
+and this:
+https://www.skillshare.com/classes/technology/Master-Big-Data-and-Hadoop-Step-By-Step-from-Scratch/
+
+good tutorial
+https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html#Job+Configuration
+http://stackoverflow.com/questions/13012511/how-to-run-a-jar-file-in-hadoop
+
+
+CombineFileInputFormat problem
+
+http://stackoverflow.com/questions/19485535/is-there-a-combine-input-format-for-hadoop-streaming
+
+https://www.ibm.com/developerworks/ru/library/bd-hadoopcombine/
+http://www.ibm.com/developerworks/library/bd-hadoopcombine/index.html?S_TACT=105AGX99&S_CMP
+
+http://stackoverflow.com/questions/9205943/specifying-own-inputformat-for-streaming-job
+
+
+Interesting course:
+https://www.skillshare.com/classes/technology/Master-Big-Data-and-Hadoop-Step-By-Step-from-Scratch/323940396
+
+https://bigdatauniversity.com/?cm_mc_uid=46768940438314817358940&cm_mc_sid_50200000=1481735894
+
+.mapreduce. - API 2
+.mapred. - API 1
+
+
+-----------------------------------------------------------------------------------
+web client:
+http://130.211.145.208:50030/jobtracker.jsp
+
+
+
+
+------------------------------------------------------------------------------------
+
+HDFS:
+/**************Hadoop In Real World**************/
+Hadoop In Real World *** http://www.hadoopinrealworld.com
+HDFS - Working With HDFS
+/**************Hadoop In Real World**************/
+
+### LOCAL FILE SYSTEM ###
+	ls
+	mkdir
+	cp
+	mv
+	rm
+
+### LISTING ROOT DIRECTORY ###
+
+hadoop fs -ls /
+
+### LISTING DEFAULT TO HOME DIRECTORY ###
+
+hadoop fs -ls
+
+hadoop fs -ls /user/hirwuser150430
+
+### CREATE A DIRECTORY IN HDFS ###
+
+hadoop fs -mkdir hadoop-test1
+
+### COPY FROM LOCAL FS TO HDFS ###
+
+hadoop fs -copyFromLocal  /hirw-starterkit/hdfs/commands/dwp-payments-april10.csv hadoop-test1
+
+### COPY TO HDFS TO LOCAL FS ###
+
+hadoop fs -copyToLocal hadoop-test1/dwp-payments-april10.csv .
+
+hadoop fs -ls hadoop-test1
+
+### CREATE 2 MORE DIRECTORIES ###
+
+hadoop fs -mkdir hadoop-test2
+
+hadoop fs -mkdir hadoop-test3
+
+### COPY A FILE FROM ONE FOLDER TO ANOTHER ###
+
+hadoop fs -cp hadoop-test1/dwp-payments-april10.csv hadoop-test2
+
+### MOVE A FILE FROM ONE FOLDER TO ANOTHER ###
+
+hadoop fs -mv hadoop-test1/dwp-payments-april10.csv hadoop-test3
+
+### CHECK REPLICATION ###
+
+hadoop fs -ls hadoop-test3
+
+### CHANGE OR SET REPLICATION FACTOR ###
+
+hadoop fs -Ddfs.replication=2 -cp hadoop-test2/dwp-payments-april10.csv hadoop-test2/test_with_rep2.csv
+
+hadoop fs -ls hadoop-test2
+
+hadoop fs -ls hadoop-test2/test_with_rep2.csv
+
+### CHANGING PERMISSIONS ###
+
+hadoop fs -chmod 777 hadoop-test2/test_with_rep2.csv
+
+### FILE SYSTEM CHECK - REQUIRES ADMIN PREVILEGES ###
+
+sudo -u hdfs hdfs fsck /user/hirwuser150430/hadoop-test2 -files -blocks -locations 
+
+sudo -u hdfs hdfs fsck /user/hirwuser150430/hadoop-test3 -files -blocks -locations 
+
+sudo -u hdfs hdfs fsck /user/ubuntu/input/yelp/yelp_academic_dataset_review.json -files -blocks -locations 
+
+vi /etc/hadoop/conf/hdfs-site.xml
+
+/data/1/dfs/dn/current/BP-2125152513-172.31.45.216-1410037307133/current/finalized
+
+### DELETE DIR/FILES IN HDFS ###
+
+hadoop fs -rm hadoop-test2/test_with_rep5.csv
+
+hadoop fs -rm -r hadoop-test1
+hadoop fs -rm -r hadoop-test2
+hadoop fs -rm -r hadoop-test3
+---------------------------------------------------------------------------------------
+
+
+install virtualbox
+http://tecadmin.net/install-oracle-virtualbox-on-ubuntu/#
+
+
+hadoo 1 and 2 configuration
+https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/DeprecatedProperties.html
+
+
+
+
